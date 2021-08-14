@@ -1,6 +1,6 @@
 <?php
 
-namespace Rinsvent\Data2DTODoctrineEntityBundle\Service\Transformer;
+namespace Rinsvent\Data2DTODoctrineEntityBundle\Service;
 
 use Doctrine\ORM\EntityManagerInterface;
 use Rinsvent\Data2DTO\Transformer\Meta;
