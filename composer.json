@@ -12,7 +12,8 @@
         "symfony/http-kernel": "^5.3",
         "symfony/config": "^5.3",
         "symfony/dependency-injection": "^5.3",
-        "doctrine/orm": "^2"
+        "doctrine/orm": "^2",
+        "rinsvent/transformer-bundle": "^0.0.1"
     },
     "require-dev": {
         "codeception/codeception": "^4.1",

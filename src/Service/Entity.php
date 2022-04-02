@@ -2,7 +2,7 @@
 
 namespace Rinsvent\Data2DTODoctrineEntityBundle\Service;
 
-use Rinsvent\Data2DTO\Transformer\Meta;
+use Rinsvent\Transformer\Transformer\Meta;
 
 #[\Attribute]
 class Entity extends Meta
@@ -11,6 +11,8 @@ class Entity extends Meta
 
     public function __construct(
         public string $class,
-        public string $primaryType = 'id',
-    ) {}
+        public array $tags = ['default'],
+    ) {
+        parent::__construct($tags);
+    }
 }

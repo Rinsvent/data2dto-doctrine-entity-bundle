@@ -3,28 +3,27 @@
 namespace Rinsvent\Data2DTODoctrineEntityBundle\Service;
 
 use Doctrine\ORM\EntityManagerInterface;
-use Rinsvent\Data2DTO\Transformer\Meta;
-use Rinsvent\Data2DTOBundle\Service\AbstractTransformer;
+use Rinsvent\Transformer\Transformer\Meta;
+use Rinsvent\TransformerBundle\Service\AbstractTransformer;
 
 class EntityTransformer extends AbstractTransformer
 {
     public function __construct(
         protected EntityManagerInterface $em
-    ) {}
+    ) {
+    }
 
     /**
      * @param $data
      * @param Entity $meta
      */
-    public function transform(&$data, Meta $meta): void
+    public function transform(mixed $data, Meta $meta): mixed
     {
-        if ($meta->primaryType === 'id' && !is_int($data)) {
-            return;
-        }
-        if ($meta->primaryType === 'uuid' && !is_string($data)) {
-            return;
-        }
         $repository = $this->em->getRepository($meta->class);
-        $data = $repository->find($data);
+        try {
+            return $repository->find($data);
+        } catch (\Throwable) {
+            return $data;
+        }
     }
 }
